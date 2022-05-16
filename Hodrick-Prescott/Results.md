@@ -57,9 +57,32 @@ At the end of the script there is the following code that accounts as an example
 gdp7 <- filter(gdp, row_number()<=7)
 hp_filter(data= gdp7, lambda = 1600, var_name = `Gross Domestic Product`, show_F = TRUE)
 ```
-That will display the following: 
+That will display the following result: 
 
-![image](https://user-images.githubusercontent.com/103344273/168699141-4be03b03-7bcd-49ec-9869-f0426f0298dc.png)
+```
+ Hoddrick - Prescott Filter 
+ -------------------------
+ Variable: Gross Domestic Product 
+ λ = 1600 
+ Series Type: Additive |  y=t+c 
+
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7]
+[1,]    1   -2    1    0    0    0    0
+[2,]   -2    5   -4    1    0    0    0
+[3,]    1   -4    6   -4    1    0    0
+[4,]    0    1   -4    6   -4    1    0
+[5,]    0    0    1   -4    6   -4    1
+[6,]    0    0    0    1   -4    5   -2
+[7,]    0    0    0    0    1   -2    1
+        date variable    trend         cycle
+1 1947-01-01 7.617981 7.606784  0.0111964202
+2 1947-04-01 7.615310 7.616166 -0.0008557825
+3 1947-07-01 7.613243 7.625555 -0.0123115276
+4 1947-10-01 7.628765 7.634957 -0.0061918890
+5 1948-01-01 7.643695 7.644371 -0.0006761621
+6 1948-04-01 7.660067 7.653792  0.0062744931
+7 1948-07-01 7.665780 7.663215  0.0025644479
+```
 
 As we can see we got some information on the variable, the penality $`lambda`$, the $`\mathbf{F}`$ matrix (option `show_F=TRUE`) and if we assign it to an object we 
 would have the dataframe containing the variable, trend and cycle columns. 
