@@ -51,7 +51,7 @@ where:
 
 ## Results of the code
 
-At the end of the script there is the following code:
+At the end of the script there is the following code that accounts as an example of a 7 observation univariate serie. 
 
 ```
 gdp7 <- filter(gdp, row_number()<=7)
