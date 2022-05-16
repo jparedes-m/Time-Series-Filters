@@ -28,7 +28,7 @@ To solve this problem:
 - The coefficients of the F.O.C will give the T coefficients to build the following system of equations:
 
 ```math
-\boldsymbo{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}
+\boldsymbol{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}
 ```
 where:
 - $`\mathbf{I}`$ is the $`T \times T`$ identity matrix
