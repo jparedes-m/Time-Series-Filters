@@ -31,9 +31,9 @@ To solve this problem:
 \boldsymbo{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}
 ```
 where:
-- $`\mathbf{I}`$ is the $T \times T$ identity matrix
+- $`\mathbf{I}`$ is the $`T \times T`$ identity matrix
 - $`\mathbf{y}`$ is the original series
-- $`\mathbf{F}`$ is a $T\times T$ pentadiagonal matrix
+- $`\mathbf{F}`$ is a $`T\times T`$ pentadiagonal matrix
 
 ```\math
 \mathbf{F}=\left[ \begin{matrix}
