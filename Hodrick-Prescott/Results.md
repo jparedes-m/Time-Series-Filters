@@ -27,7 +27,7 @@ To solve this problem:
 - Note that the arguments to minimize this expression are $`\tau_{1}, \cdots, \tau_{T}`$. Therefore you have $`T`$ **First Order Conditions**
 - The coefficients of the F.O.C will give the T coefficients to build the following system of equations:
 
-```\math
+```math
 \boldsymbo{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}
 ```
 where:
@@ -35,7 +35,7 @@ where:
 - $`\mathbf{y}`$ is the original series
 - $`\mathbf{F}`$ is a $`T\times T`$ pentadiagonal matrix
 
-```\math
+```math
 \mathbf{F}=\left[ \begin{matrix}
 1 & -2 & 1 &  &  &  &  \\
 -2 & 5 & -4 & 1 &  &  &    \\
@@ -45,5 +45,5 @@ where:
   &  &  & 1 & -4 & 5 & -2 \\
   &  &  &  & 1 & -2 & 1 \\
 \end{matrix}
-\right].
+\right]
 ```
