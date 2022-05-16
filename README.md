@@ -3,6 +3,6 @@ This is a small project I am doing while I learn from diverse time series method
 
 This repository will mainly have time series filtering methods such as: Hodrick Prescott, Baxter King, Butterworth, Christiano Fitzgerald, Beveridge Nelson. 
 
-When I have covered most of the time series filters provided by stata, I will create a package with these functions. Feel free to use them. 
+When I have covered most of the time series filters provided by stata (replications in R), I will create a package with these functions. Feel free to use them. 
 
 Jorge. 
