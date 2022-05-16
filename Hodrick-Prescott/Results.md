@@ -26,7 +26,7 @@ So Hodrick - Prescott filters looks for a vector $`\boldsymbol{\tau}`$ that solv
 ```
 To solve this problem:
 - We will find a $`T \times 1`$ vector $`\tau`$ that will have the trend values of the serie
-- We will have $`T`$ First order conditions, where its coefficients will form the $`T \times T`$ $`\mathbf{F}`$ matrix
+- We will have $`T`$ First order conditions, where its coefficients will form the ($`T \times T`$) $`\mathbf{F}`$ matrix
 
 ```math
 \boldsymbol{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}
