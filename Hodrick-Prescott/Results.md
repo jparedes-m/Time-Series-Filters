@@ -84,10 +84,10 @@ That will display the following result:
 7 1948-07-01 7.665780 7.663215  0.0025644479
 ```
 
-As we can see we got some information on the variable, the penality $`lambda`$, the $`\mathbf{F}`$ matrix (option `show_F=TRUE`) and if we assign it to an object we 
+As we can see we got some information on the variable, the penality $`\lambda`$, the $`\mathbf{F}`$ matrix (option `show_F=TRUE`) and if we assign it to an object we 
 would have the dataframe containing the variable, trend and cycle columns. 
 
-Using my habilities in ggplot and the functio developed I created this graph using the data for the Jan - 1947 to Jan 2022. 
+Using my habilities in `ggplot2` and the function developed I created this graph using the data for the U.S. Real GDP for the time-span of Jan - 1947 to Jan 2022. This information is in the Data Folder, furthermore, the data was obtained at the FRED St. Louis 
 
 
 ![image](https://user-images.githubusercontent.com/103344273/168700256-119908a5-3266-4103-8953-78338428bcf6.png)
