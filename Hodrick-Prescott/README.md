@@ -85,6 +85,6 @@ That will display the following result:
 
 As we can see we got some information on the variable, the penality $`\lambda`$, the $`\mathbf{F}`$ matrix. So assigning it to an object, it returns the dataframe, for the U.S output here are the results:
 
-<p align="center">
-![image](https://user-images.githubusercontent.com/103344273/171779709-1404c923-0afd-44be-9bed-d5723963faac.png)
-</p>
+
+<center> ![image](https://user-images.githubusercontent.com/103344273/171779709-1404c923-0afd-44be-9bed-d5723963faac.png)</center>
+
