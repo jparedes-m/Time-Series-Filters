@@ -14,27 +14,27 @@ y_{t}=\tau_{t}+c_{t}
 y_{t} =  \tau_{t} \cdot c_{t}
 ```
 
-$`\tau_{t}`$ is the series trend while $`c_{t}`$ is the series cycle. 
+$\tau_{t}$ is the series trend while $c_{t}$ is the series cycle. 
 
-In the context of macroeconomics, say $`y_{t}`$ is the GDP (output), therefore the trend will be the *potential gdp* while the cycle will be the *output gap*
+In the context of macroeconomics, say $y_{t}$ is the GDP (output), therefore the trend will be the *potential gdp* while the cycle will be the *output gap*
 
 ## The optimization problem 
-So Hodrick - Prescott filters looks for a vector $`\boldsymbol{\tau}`$ that solves the following minimization problem:
+So Hodrick - Prescott filters looks for a vector $\boldsymbol{\tau}$ that solves the following minimization problem:
 
 ```math
 \min_{\boldsymbol{\tau}} \sum^{T}_{t=1}(y_{t}-\tau_{t})^{2}+\lambda\sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}
 ```
 To solve this problem:
-- We will find a $`T \times 1`$ vector $`\tau`$ that will have the trend values of the serie
-- We will have $`T`$ First order conditions, where its coefficients will form the ($`T \times T`$) $`\mathbf{F}`$ matrix
+- We will find a $T \times 1$ vector $\tau$ that will have the trend values of the serie
+- We will have $T$ First order conditions, where its coefficients will form the ($T \times T$) $\mathbf{F}$ matrix
 
 ```math
 \boldsymbol{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}
 ```
 where:
-- $`\mathbf{I}`$ is the $`T \times T`$ identity matrix
-- $`\mathbf{y}`$ is the original series
-- $`\mathbf{F}`$ is a $`T\times T`$ pentadiagonal matrix
+- $\mathbf{I}$ is the $T \times T$ identity matrix
+- $\mathbf{y}$ is the original series
+- $\mathbf{F}$ is a $T\times T$ pentadiagonal matrix
 
 ```math
 \mathbf{F}=\left[ \begin{matrix}
@@ -83,11 +83,7 @@ That will display the following result:
 7 2001-07-01 9.491613 9.497148 -0.005535700
 ```
 
-As we can see we got some information on the variable, the penality $`\lambda`$, the $`\mathbf{F}`$ matrix (option `show_F=TRUE`) and if we assign it to an object we 
-would have the dataframe containing the variable, trend and cycle columns. 
+As we can see we got some information on the variable, the penality $`\lambda`$, the $`\mathbf{F}`$ matrix. So assigning it to an object, it returns the dataframe, for the U.S output here are the results:
 
-Using my habilities in `ggplot2` and the function developed I created this graph using the data for the U.S. Real GDP for the time-span of Jan - 1947 to Jan 2022. This information is in the Data Folder, furthermore, the data was obtained at the FRED St. Louis 
-
-
-![image](https://user-images.githubusercontent.com/103344273/168700256-119908a5-3266-4103-8953-78338428bcf6.png)
+![image](https://user-images.githubusercontent.com/103344273/171779709-1404c923-0afd-44be-9bed-d5723963faac.png)
 
