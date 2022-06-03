@@ -69,7 +69,7 @@ hp_filter <- function(data, lambda, show_F=FALSE, additional_info=FALSE){
                        cycle = cycle)
   # Additional info ----
   if(additional_info==T){
-  cat(paste(" Hoddrick - Prescott Filter \n -------------------------\n", 
+  cat(paste(" Hodrick - Prescott Filter \n -------------------------\n", 
             "λ =", lambda, "\n",
             "Series Type: y = trend + cycle \n\n"))
   }
