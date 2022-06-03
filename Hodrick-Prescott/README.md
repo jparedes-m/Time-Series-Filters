@@ -54,17 +54,16 @@ where:
 At the end of the script there is the following code that accounts as an example of a 7 observation univariate serie. 
 
 ```
-gdp7 <- filter(gdp, row_number()<=7)
-hp_filter(data= gdp7, lambda = 1600, var_name = `Gross Domestic Product`, show_F = TRUE)
+> gdp7 <- filter(gdp, row_number()<=7)
+> hp_filter(data= gdp7, lambda = 1600, show_F = TRUE, additional_info = T)
 ```
 That will display the following result: 
 
 ```
- Hoddrick - Prescott Filter 
+ Hodrick - Prescott Filter 
  -------------------------
- Variable: Gross Domestic Product 
  λ = 1600 
- Series Type: Additive |  y=t+c 
+ Series Type: y = trend + cycle 
 
      [,1] [,2] [,3] [,4] [,5] [,6] [,7]
 [1,]    1   -2    1    0    0    0    0
@@ -74,14 +73,14 @@ That will display the following result:
 [5,]    0    0    1   -4    6   -4    1
 [6,]    0    0    0    1   -4    5   -2
 [7,]    0    0    0    0    1   -2    1
-        date variable    trend         cycle
-1 1947-01-01 7.617981 7.606784  0.0111964202
-2 1947-04-01 7.615310 7.616166 -0.0008557825
-3 1947-07-01 7.613243 7.625555 -0.0123115276
-4 1947-10-01 7.628765 7.634957 -0.0061918890
-5 1948-01-01 7.643695 7.644371 -0.0006761621
-6 1948-04-01 7.660067 7.653792  0.0062744931
-7 1948-07-01 7.665780 7.663215  0.0025644479
+        date variable    trend        cycle
+1 2000-01-01 9.467712 9.476978 -0.009266082
+2 2000-04-01 9.485754 9.480357  0.005397061
+3 2000-07-01 9.486751 9.483730  0.003021151
+4 2000-10-01 9.492677 9.487095  0.005582231
+5 2001-01-01 9.489429 9.490451 -0.001021451
+6 2001-04-01 9.495624 9.493801  0.001822790
+7 2001-07-01 9.491613 9.497148 -0.005535700
 ```
 
 As we can see we got some information on the variable, the penality $`\lambda`$, the $`\mathbf{F}`$ matrix (option `show_F=TRUE`) and if we assign it to an object we 
