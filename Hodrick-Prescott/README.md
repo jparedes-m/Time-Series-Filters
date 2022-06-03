@@ -1,4 +1,4 @@
-# Results on the Hodrick Prescott Filter
+# Hodrick Prescott Filter (and its modifications)
 
 The Hodrick Prescott Filter is a well known process to decompose an univariate time series. Suppose you have a time serie with no seasonal component,
 that can be decomposed additively or multiplicatively as:
