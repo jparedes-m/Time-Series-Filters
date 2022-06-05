@@ -89,4 +89,11 @@ As we can see we got some information on the variable, the penality $\lambda$, t
 
 # Marcet and Ravn approach
 
-Marcet and Ravn in 2003 in their [paper][https://bse.eu/research/working-papers/hp-filter-cross-country-comparisons] point out that mantaining $\lambda$ constant
+Marcet and Ravn in 2003 in their [paper](https://bse.eu/research/working-papers/hp-filter-cross-country-comparisons) point out that having a rule of thumb that $\lambda = 1600$ for all countries quarterly gdp series is wrong. They sustain this argument by taking into account the Spanish 70-80s crisis, where having $\lambda = 1600$ for the output gap estimation didn't match the historical view of the crisis. Furthermore, the argument from $\lambda=1600$ comes from Hodrick and Prescott seminal paper where they compute that the 1600 value would be a good fit for the US post-war economy. 
+
+Therefore, Marcet and Ravn come up with two rules:
+
+## Rule one
+
+As stated by Marcet and Ravn (2003): "Rule 1 may be used instead if the researcher believes that deviations from linear trend are larger in some countries considered." Therefore, this rule is good for cross-country comparisons when you try to compare business cycles between a developed country and emerging markets. Formally this rule tries to 
+
