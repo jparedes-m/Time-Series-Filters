@@ -120,7 +120,7 @@ V = \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{\
 ```math
 F(\lambda) = \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{\displaystyle\sum_{t=1}^{T}(y_{t}-\tau_{t})^{2}} = V
 ```
-4. Compute the Hodrick Prescott Filter with the second dataset and $\lambda^{1}$.
+4. Compute the Hodrick Prescott Filter with the second dataset and $\lambda^{Rule\ 1}$.
 
 ### Code results
 
@@ -145,5 +145,6 @@ With base R plot function I made this graphs for Ecuador GDP using the Rule 1 pr
 
 ![image](https://user-images.githubusercontent.com/103344273/172071831-a396eee5-f1ea-496c-8397-5d565853358c.png)
 
+## Rule two
 
-
+The second rule stated by Marcet and Ravn is to 
