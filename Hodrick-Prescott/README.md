@@ -83,8 +83,10 @@ That will display the following result:
 7 2001-07-01 9.491613 9.497148 -0.005535700
 ```
 
-As we can see we got some information on the variable, the penality $`\lambda`$, the $`\mathbf{F}`$ matrix. So assigning it to an object, it returns the dataframe, for the U.S output here are the results:
+As we can see we got some information on the variable, the penality $\lambda$, the $\mathbf{F}$ matrix. So assigning it to an object, it returns the dataframe, for the U.S output here are the results:
 
+   ![image](https://user-images.githubusercontent.com/103344273/171779709-1404c923-0afd-44be-9bed-d5723963faac.png)
 
-![image](https://user-images.githubusercontent.com/103344273/171779709-1404c923-0afd-44be-9bed-d5723963faac.png)
+# Marcet and Ravn approach
 
+Marcet and Ravn in 2003 in their [paper][https://bse.eu/research/working-papers/hp-filter-cross-country-comparisons] point out that mantaining $\lambda$ constant
