@@ -95,5 +95,55 @@ Therefore, Marcet and Ravn come up with two rules:
 
 ## Rule one
 
-As stated by Marcet and Ravn (2003): "Rule 1 may be used instead if the researcher believes that deviations from linear trend are larger in some countries considered." Therefore, this rule is good for cross-country comparisons when you try to compare business cycles between a developed country and emerging markets. Formally this rule tries to 
+As stated by Marcet and Ravn (2003): "Rule 1 may be used instead if the researcher believes that deviations from linear trend are larger in some countries considered." Therefore, this rule is good for cross-country comparisons when you try to compare business cycles between a developed country and emerging markets. Formally this rule solves the following minimization problem:
+
+```math
+\min_{\tau_{t}}\sum_{t=1}^{T}(y_{t}-\tau_{t})^{2} \quad\text{s.t.}\quad  \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{\displaystyle\sum_{t=1}^{T}(y_{t}-\tau_{t})^{2}} \leq V
+```
+
+However, this minimization problem can be arranged as: 
+
+```math
+ \min_{\tau_{t}}\sum_{t=1}^{T} (y_{t}-\tau_{t})\quad \text{s.t.} \quad \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2} \leq V\cdot \sum_{t=1}^{T}(y_{t}-\tau_{t})^{2}
+```
+
+Therefore the computation for **Rule 1** is to:
+
+1. Assume the $\lambda = 1600$ is right for the U.S. GDP.
+2. Find the V value with the following formula:
+
+```math
+V = \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{\displaystyle\sum_{t=1}^{T}(y_{t}-\tau_{t})^{2}}
+```
+3. Now with another dataset (i.e. Ecuadors GDP) find $\lambda$ such that $F(\lambda) = V$. We will refer to this $\lambda$ as $\lambda^{1}$
+
+```math
+F(\lambda) = \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{\displaystyle\sum_{t=1}^{T}(y_{t}-\tau_{t})^{2}} = V
+```
+4. Compute the Hodrick Prescott Filter with the second dataset and $\lambda^{1}$.
+
+### Code results
+
+At the file of `HP Marcet and Ravn.R`, you should have in the environment the `hp_filter` function.
+
+You get the dataframe of the US GDP and another for Ecuador GDP. Then you execute the following code: 
+
+```
+HP_ec <- hp_filter_MR(data1 = gdp, data2 = gdp_ec, lambda = 1600, rule = "rule 1", start = 1200, end=3800)
+```
+In the console it will display the following result:
+
+```
+ Root finding: F(λ) - V = 0
+ ----------------- 
+ V: 0.000127887077934372 
+ λ for data2 under rule 1 is: 3276.746 
+ (F-V) = -9.56157895914966e-16 
+```
+
+With base R plot function I made this graphs for Ecuador GDP using the Rule 1 provided by Marcet and Ravn. 
+
+![image](https://user-images.githubusercontent.com/103344273/172071831-a396eee5-f1ea-496c-8397-5d565853358c.png)
+
+
 
