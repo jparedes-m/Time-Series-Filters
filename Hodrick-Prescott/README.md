@@ -42,7 +42,7 @@ where:
 \right]
 ```
 
-## Results of the code
+## Code Results
 
 At the end of the script there is the following code that accounts as an example of a 7 observation univariate serie. 
 
