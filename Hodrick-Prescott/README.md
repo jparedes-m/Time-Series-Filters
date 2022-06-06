@@ -188,3 +188,5 @@ Here are the results for the UK under rule 2
 
 ![image](https://user-images.githubusercontent.com/103344273/172076199-b58362af-1ed6-407e-87e3-ac0fa412e5f6.png)
 
+# References:
+The HP-Filter in Cross-Country Comparisons | Barcelona School of Economics Working Papers. (2015, septiembre 14). Barcelona School of Economics. https://bse.eu/research/working-papers/hp-filter-cross-country-comparisons
