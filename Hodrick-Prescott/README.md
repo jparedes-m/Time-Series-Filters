@@ -160,12 +160,12 @@ I solve this problem in the same way as I solved for rule 1, to assume $\lambda 
 
 W (with original series)
 ```math
-W = frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{T-2}
+W = \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{T-2}
 ```
 
 $F(\lambda)$ (with the second series)
 ```math
-F(\lambda) = frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{T-2}
+F(\lambda) = \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{T-2}
 ```
 ### Code Results
 
