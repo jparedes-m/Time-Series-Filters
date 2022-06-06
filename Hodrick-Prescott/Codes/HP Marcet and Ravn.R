@@ -14,8 +14,7 @@ setwd(home)
 ## Seasonally Adjusted Annual Rate
 # Data is retrieved from FRED St. Louis: https://fred.stlouisfed.org/series/GDPC1 
 
-gdp <- read_csv("gdp_us.csv") %>% 
-  rename(gdp=GDPC1, date=DATE) %>% 
+gdp <- read_csv("gdp_us.csv") %>%
   mutate(date=as.Date(date),
          gdp=log(gdp)) %>% 
   filter(year(date)>=2000)
@@ -24,9 +23,7 @@ gdp_ec <- read_csv("gdp_ec.csv") %>%
   mutate(date=as.Date(date), 
          pib=log(pib/1000000))
 
-gdp_uk <- read_csv("gdp_uk.csv") %>% 
-  rename(gdp = CLVMNACSCAB1GQUK,
-         date =DATE) %>% 
+gdp_uk <- read_csv("gdp_uk.csv") %>%
   mutate(gdp = log(gdp)) %>% 
   filter(year(date)>=2000)
 # GDP from Ecuador is in thousands of millions of US dollars
@@ -127,6 +124,7 @@ hp_filter_MR <- function(data1, data2, lambda, rule = "rule 1", start=1, end, to
   return(HP)
 }
 
+# Examples and the timing ----
 start <- Sys.time()
 HP_ec <- hp_filter_MR(data1 = gdp, data2 = gdp_ec, lambda = 1600, rule = "rule 1", start = 1200, end=3800)
 end <- Sys.time()
@@ -137,6 +135,8 @@ HP_uk <- hp_filter_MR(data1 = gdp, data2 = gdp_uk, lambda = 1600, rule = "rule 2
 end <- Sys.time()
 end-start
 
+
+# Graphs ----
 
 par(mfrow=c(1,2))
 plot(HP_ec$date, HP_ec$variable, main = "Variable - Trend",
@@ -160,3 +160,5 @@ plot(HP_uk$date, HP_uk$cycle, main ="Cycle",
      ylab="% Deviations from Trend", xlab = "Time", col="blue", lty=1, type="l")
 abline(h=0, col="black", lty=2)
 par(mfrow=c(1,1))
+
+# EOF
