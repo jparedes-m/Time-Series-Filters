@@ -147,4 +147,44 @@ With base R plot function I made this graphs for Ecuador GDP using the Rule 1 pr
 
 ## Rule two
 
-The second rule stated by Marcet and Ravn is to 
+The second rule stated by Marcet and Ravn is to modify the restriction of the main minimization problem so that the constraint restricts the variability of the acceleration in the trend component directly.  This second rule might be used if the researcher believes that the deviation of actual trend from a linear trend is simialr across countries (i.e. UK and US).
+
+Formally, the minimization problem becomes:
+
+```math
+\min_{\tau_{t}}\sum_{t=1}^{T}(y_{t}-\tau_{t})^{2} \quad\text{s.t.}\quad  \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{T-2} \leq W
+```
+By solving this optimization problem, we will find another $\lambda$, we will refer to this parameter as $\lambda^{rule\ 2}$
+
+I solve this problem in the same way as I solved for rule 1, to assume $\lambda = 1600$ is the value for the US, then to solve for W and for series 2, find such $\lambda$ that satisfies $F(\lambda) = W$.
+
+W (with original series)
+```math
+W = frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{T-2}
+```
+
+$F(\lambda)$ (with the second series)
+```math
+F(\lambda) = frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}}{T-2}
+```
+### Code Results
+
+Here is the input for the UK output gap under rule 2. 
+
+```
+HP_uk <- hp_filter_MR(data1 = gdp, data2 = gdp_uk, lambda = 1600, rule = "rule 2", end=3800)
+```
+
+This is the console output:
+```
+ Root finding: F(λ) - W = 0
+ ----------------- 
+ W: 3.04786220922701e-08 
+ λ for data2 under rule 2 is: 4591.0397 
+ (F-V) = -3.51968659363763e-19 
+```
+
+Here are the results for the UK under rule 2
+
+![image](https://user-images.githubusercontent.com/103344273/172076199-b58362af-1ed6-407e-87e3-ac0fa412e5f6.png)
+
