@@ -3,7 +3,6 @@
 The Hodrick Prescott Filter is a well known process to decompose an univariate time series. Suppose you have a time serie with no seasonal component,
 that can be decomposed additively or multiplicatively as:
 
-#### Additively
 ```math
 y_{t}=\tau_{t}+c_{t}
 ```
