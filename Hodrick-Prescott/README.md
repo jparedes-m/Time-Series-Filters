@@ -8,12 +8,6 @@ that can be decomposed additively or multiplicatively as:
 y_{t}=\tau_{t}+c_{t}
 ```
 
-
-#### Multiplicatively
-```math
-y_{t} =  \tau_{t} \cdot c_{t}
-```
-
 $\tau_{t}$ is the series trend while $c_{t}$ is the series cycle. 
 
 In the context of macroeconomics, say $y_{t}$ is the GDP (output), therefore the trend will be the *potential gdp* while the cycle will be the *output gap*
