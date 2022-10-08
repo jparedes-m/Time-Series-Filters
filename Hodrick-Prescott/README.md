@@ -19,11 +19,11 @@ So Hodrick - Prescott filters looks for a vector $\boldsymbol{\tau}$ that solves
 ```
 To solve this problem:
 - We will find a $T \times 1$ vector $\tau$ that will have the trend values of the serie
-- We will have $T$ First order conditions, where its coefficients will form the $(T \times T)$ $\mathbf{F}$ matrix
+- We will have $T$ First order conditions, where its coefficients will form the $(T \times T)$   $\mathbf{F}$ matrix
 
 ```math
 \boldsymbol{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}\\
-\boldsymbol{\tau}_{t} = H\cdot y
+\boldsymbol{\tau}_{t} = H\cdot y, \text{ where } H = (\mathbf{I}+\lambda \mathbf{F})^{-1}
 ```
 where:
 - $\mathbf{I}$ is the $T \times T$ identity matrix
@@ -44,12 +44,17 @@ where:
 ```
 
 ## Code Results
+The function `hp_filter` needs as inputs:
+- a dataframe containing a column of dates and a column of data
+- the lambda parameter
 
-At the end of the script there is the following code that accounts as an example of a 7 observation univariate serie. 
+As output this function returns a list of two elements: 
+- The first element is a dataframe that contains the original series and the estimated trend and cycle for the provided time span.
+- The $H$ matrix
 
+Using `plot` we can obtain the following graph:
+![image](https://user-images.githubusercontent.com/103344273/194721925-b9c4e25b-8ada-4bc6-80b5-49644085654a.png)
 
-
-   ![image](https://user-images.githubusercontent.com/103344273/171779709-1404c923-0afd-44be-9bed-d5723963faac.png)
 
 # Marcet and Ravn approach
 
