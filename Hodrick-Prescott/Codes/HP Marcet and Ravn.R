@@ -158,3 +158,19 @@ abline(h=0, col="black", lty=2)
 par(mfrow=c(1,1))
 
 #EOF
+
+HP_ec %>%
+  filter(date >= "2012-12-31" & date <= "2021-10-01") %>%
+  mutate(quarter = as.yearqtr(date)) %>% 
+  ggplot() +
+  aes(x = quarter, y = cycle) +
+  geom_line(size = 0.75, colour = "#B22222") +
+  geom_hline(yintercept = 0,size = 0.75, linetype="dashed")+
+  labs(x = "Quarter", y = "% Deviation from Trend", 
+       title = "Ecuador's Business Cycle", 
+       subtitle = "Obtained by Hodrick Prescott Filter with Marcet and Ravn Modification | λ = 3276.746", 
+       caption = "Data obtained by National Quarterly Accounts | BCE") +
+  theme_light() +
+  theme(plot.title = element_text(size = 20L, face = "bold", hjust = 0.5), 
+        plot.subtitle = element_text(size = 15L, hjust = 0.5))+
+  scale_x_yearqtr(format = '%Yq%q',n=30) 
