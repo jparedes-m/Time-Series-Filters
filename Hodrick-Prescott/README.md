@@ -12,7 +12,7 @@ $\tau_{t}$ is the series trend while $c_{t}$ is the series cycle.
 In the context of macroeconomics, say $y_{t}$ is the GDP (output), therefore the trend will be the *potential gdp* while the cycle will be the *output gap*
 
 ## The optimization problem 
-So Hodrick - Prescott filters looks for a vector $\boldsymbol{\tau}$ that solves the following minimization problem:
+So Hodrick - Prescott filters look for a vector $\boldsymbol{\tau}$ that solves the following minimization problem:
 
 ```math
 \min_{\boldsymbol{\tau}} \sum^{T}_{t=1}(y_{t}-\tau_{t})^{2}+\lambda\sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1})^{2}
