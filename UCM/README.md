@@ -60,3 +60,19 @@ Consider that the initial guesses $\alpha_{0}$, and $P_{0}$ can be computed from
     0 & \gamma_{1}(c_{t-1}, c_{t}) & \gamma_{0}(c_{t-1})
     \end{bmatrix}_{HP}
 ```
+
+## Stochastic Drift
+
+```math
+y_{t} = \tau_{t} + c_{t}\\
+\tau_{t} = \delta_{t-1} + \tau_{t-1} + \epsilon_{t}\\
+\delta_{t} = \delta_{t-1} + \omega_{t}\\
+c_{t} = \rho_{1} c_{t-1} \rho_{2} c_{t-2} + \mu_{t}\\
+\begin{pmatrix}
+    \epsilon_{t}\\\omega_{t} \\ \mu_{t}
+    \end{pmatrix}\sim\ \text{i.i.d. }\mathcal{N} \left(0, \begin{pmatrix}
+    \sigma^{2}_{\epsilon} & 0 & 0 \\
+    0 & \sigma^{2}_\omega ^ 0 \\
+    0 & 0 & \sigma^{2}_mu
+    \end{pmatrix}\right)
+```
