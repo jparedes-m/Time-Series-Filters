@@ -157,7 +157,21 @@ Here are the results for the UK under rule 2
 
 ![image](https://user-images.githubusercontent.com/103344273/194731698-1bf5455c-7888-4da6-bca3-6909e923df20.png)
 
+# One sided Hodrick Prescott Filter
+
+Since it first appeareance was in Stock and Watson (1999), the one sided Hodrick Prescott filter tries to detrend the series into a trend and cyclical component. However it is Wolf, et. al (2020) who computes it without the Kalman Filter. 
+
+As Wolf et. al state: 
+
+: "This procedure is equivalent to applying HP-2s recursively on an expanding sample and
+keeping, from each recursion step, only the estimate of the trend component for the latest
+period. "
+
+
 
 # References:
 Marcet, A., & Morten, R. (2015, septiembre 14). The HP-Filter in Cross-Country Comparisons | Barcelona School of Economics Working Papers. Barcelona School of Economics. https://bse.eu/research/working-papers/hp-filter-cross-country-comparisons
 
+Stock, J. H., & Watson, M. W. (1999). Forecasting inflation [Working Paper]. National Bureau of Economic Research. https://doi.org/10.3386/w7023
+
+Wolf, E., Mokinski, F., & Schüler, Y. S. (2020). On adjusting the one-sided hodrick-prescott filter [SSRN Scholarly Paper]. https://doi.org/10.2139/ssrn.3536248
