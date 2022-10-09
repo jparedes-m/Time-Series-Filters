@@ -10,7 +10,6 @@ Consider the following system of equations:
 y_{t} = \tau_{t} + c_{t}\\
 \tau_{t} = \delta + \tau_{t-1} + \varepsilon_{t}\\
 c_{t} = \rho_{1} c_{t-1} + \rho_{2} c_{t-2} + \mu_{t}\\
-\begin{pmatrix}
-\varepsilon_{t} \\ \mu_{t} 
-\end{pmatrix} \sim \text{ i.i.d  } \mathcal{N} \left(0, \begin{pmatrix} \sigma^{2}_{\varepsilon} & \\ & \sigma^{2}_{\mu} \end{pmatrix}
+\varepsilon_{t} \sim \mathcal{N} (0, \sigma^{2}_{\varepsilon})\\
+\mu_{t} \sim \mathcal{N}(0, \sigma^{2}_{\mu})
 ```
