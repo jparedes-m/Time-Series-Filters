@@ -98,21 +98,21 @@ At the file of `HP Marcet and Ravn.R`, you should have in the environment the `h
 You get the dataframe of the US GDP and another for Ecuador GDP. Then you execute the following code: 
 
 ```
-HP_ec <- hp_filter_MR(data1 = gdp, data2 = gdp_ec, lambda = 1600, rule = "rule 1", start = 1200, end=3800)
+> HP_ec <- hp_filter_MR(data1 = gdp_us, data2 = gdp_ec, lambda = 1600, rule = "rule 1")
 ```
 In the console it will display the following result:
 
 ```
  Root finding: F(λ) - V = 0
  ----------------- 
- V: 0.000127887077934372 
- λ for data2 under rule 1 is: 3276.746 
- (F-V) = -9.56157895914966e-16 
+ V: 0.000158265640468348 
+ λ data2 under rule 1 is: 1966.4815 
+ (F-V) = 1.66641873911022e-16
 ```
 
 With base R plot function I made this graphs for Ecuador GDP using the Rule 1 provided by Marcet and Ravn. 
 
-![image](https://user-images.githubusercontent.com/103344273/172071831-a396eee5-f1ea-496c-8397-5d565853358c.png)
+![image](https://user-images.githubusercontent.com/103344273/194731694-9d245fe5-4de8-48eb-a69a-41b5c213482c.png)
 
 ## Rule two
 
@@ -141,21 +141,22 @@ F(\lambda) = \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1
 Here is the input for the UK output gap under rule 2. 
 
 ```
-HP_uk <- hp_filter_MR(data1 = gdp, data2 = gdp_uk, lambda = 1600, rule = "rule 2", end=3800)
+> HP_uk <- hp_filter_MR(data1 = gdp_us, data2 = gdp_uk, lambda = 1600, rule = "rule 2")
 ```
 
 This is the console output:
 ```
  Root finding: F(λ) - W = 0
  ----------------- 
- W: 3.04786220922701e-08 
- λ for data2 under rule 2 is: 4591.0397 
- (F-V) = -3.51968659363763e-19 
+ W: 4.00653265974394e-08 
+ λ for data2 under rule 2 is: 3647.6276 
+ (F-V) = -1.41034956184781e-18 
 ```
 
 Here are the results for the UK under rule 2
 
-![image](https://user-images.githubusercontent.com/103344273/172076199-b58362af-1ed6-407e-87e3-ac0fa412e5f6.png)
+![image](https://user-images.githubusercontent.com/103344273/194731698-1bf5455c-7888-4da6-bca3-6909e923df20.png)
+
 
 # References:
 Marcet, A., & Morten, R. (2015, septiembre 14). The HP-Filter in Cross-Country Comparisons | Barcelona School of Economics Working Papers. Barcelona School of Economics. https://bse.eu/research/working-papers/hp-filter-cross-country-comparisons
