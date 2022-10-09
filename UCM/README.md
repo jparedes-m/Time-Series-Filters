@@ -44,7 +44,6 @@ Note that $H_{t}$ matrix should be filled with ones rather than the variances, I
 
 ### Measurement Equation: $y_{t} = c_{t} + Z_{t} \alpha_{t} + G_{t} \epsilon_{t}$
 
-```
- y_{t} = \begin{bmatrix}
-    0\end{bmatrix} + \begin{bmatrix} 1 & 1 & 0\end{bmatrix}\begin{pmatrix} \tau_{t} \\ c_{t} \\ c_{t-1} \end{pmatrix} + \begin{bmatrix} 0 \end{bmatrix} \epsilon_{t}
+```math
+ y_{t} = \begin{bmatrix} 0\end{bmatrix} + \begin{bmatrix} 1 & 1 & 0\end{bmatrix}\begin{pmatrix} \tau_{t} \\ c_{t} \\ c_{t-1} \end{pmatrix} + \begin{bmatrix} 0 \end{bmatrix} \epsilon_{t}
  ```
