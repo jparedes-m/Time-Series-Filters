@@ -15,16 +15,14 @@ wd <- getwd()
 rm(home, laptop)
 
 # Data ----
-# I used the Real Gross Domestic Product for the U.S. Billions of Chained 2012 Dollars, 
-## Seasonally Adjusted Annual Rate
-# Data is retrieved from FRED St. Louis: https://fred.stlouisfed.org/series/GDPC1 
+fredr_set_key("#######")
 
-gdp <- read_csv("gdp_us.csv") %>% 
-  mutate(DATE=as.Date(DATE),
-         GDPC1=log(GDPC1)) %>% 
-  rename(date = DATE, gdp = GDPC1) %>% 
-  filter(year(date) >= 1970)
-
+gdp_us <- fredr(series_id = "GDPC1", 
+                observation_start = as.Date("1970-01-01"),
+                observation_end = as.Date("2022-04-01")) %>% 
+  select(date, value) %>% 
+  rename(gdp = value) %>% 
+  mutate(gdp = log(gdp))
 # HP Filter ----
 hp_filter <- function(data, lambda){
   # Set the data ----
