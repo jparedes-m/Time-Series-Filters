@@ -47,3 +47,16 @@ Note that $H_{t}$ matrix should be filled with ones rather than the variances, I
 ```math
  y_{t} = \begin{bmatrix} 0\end{bmatrix} + \begin{bmatrix} 1 & 1 & 0\end{bmatrix}\begin{pmatrix} \tau_{t} \\ c_{t} \\ c_{t-1} \end{pmatrix} + \begin{bmatrix} 0 \end{bmatrix} \epsilon_{t}
  ```
+### Initial Guesses
+Consider that the initial guesses $\alpha_{0}$, and $P_{0}$ can be computed from the two-sided Hodrick Prescott Filter.
+
+```math
+ \alpha_{0} =  \begin{pmatrix}
+    \tau_{2} \\ c_{2} \\ c_{1}
+    \end{pmatrix}_{HP} \quad 
+    P_{0} = \begin{bmatrix} 
+    \gamma_{0}(\tau_{t}) & 0 & 0 \\
+    0 & \gamma_{0}(c_{t}) & \gamma_{1}(c_{t}, c_{t-1})\\
+    0 & \gamma_{1}(c_{t-1}, c_{t}) & \gamma_{0}(c_{t-1})
+    \end{bmatrix}_{HP}
+```
