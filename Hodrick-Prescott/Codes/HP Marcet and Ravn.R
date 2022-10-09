@@ -14,7 +14,7 @@ wd <- getwd()
 rm(home, laptop)
 
 # FRED Setting
-fredr_set_key("dedfd4de61dbed2e5bb2e5e13e1d972a")
+fredr_set_key("#######")
 
 # Data ----
 
