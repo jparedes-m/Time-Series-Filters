@@ -13,3 +13,29 @@ c_{t} = \rho_{1} c_{t-1} + \rho_{2} c_{t-2} + \mu_{t}\\
 \varepsilon_{t} \sim \mathcal{N} (0, \sigma^{2}_{\varepsilon})\\
 \mu_{t} \sim \mathcal{N}(0, \sigma^{2}_{\mu})
 ```
+
+So I use the State Space representation for estimating with the Kalman Filter. I use the package `FKF`, for the estimation. 
+
+I change just a little the notation from the documentation of the `FKF` package
+
+### State Equation: $\alpha_{t} = d_{t} + T_{t} \alpha_{t-1} + H_{t} \eta_{t}$
+
+```math
+\begin{pmatrix}
+    \tau_{t} \\  c_{t} \\ c_{t-1}
+    \end{pmatrix} = \begin{pmatrix}
+    \delta \\0 \\0
+    \end{pmatrix} + \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & \rho_{1} & \rho_{2}\\
+    0 & 1 & 0
+    \end{pmatrix}\begin{pmatrix}
+    \tau_{t-1} \\ c_{t-1} \\ c_{t-2}+
+    \end{pmatrix}+\begin{pmatrix}
+    \sigma^{2}_{\epsilon} & 0 & 0 \\
+    0 & \sigma^{2}_{\mu} & 0 \\
+    0 & 0 & 0
+    \end{pmatrix}\begin{pmatrix}
+    \epsilon_{t} \\  \mu_{t} \\ 0
+    \end{pmatrix}
+```
