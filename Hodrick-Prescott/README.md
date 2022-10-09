@@ -161,11 +161,24 @@ Here are the results for the UK under rule 2
 
 Since it first appeareance was in Stock and Watson (1999), the one sided Hodrick Prescott filter tries to detrend the series into a trend and cyclical component. However it is Wolf, et. al (2020) who computes it without the Kalman Filter. 
 
-As Wolf et. al state: 
+As Wolf et. al (2020) state: 
 
 > "This procedure is equivalent to applying HP-2s recursively on an expanding sample and
 keeping, from each recursion step, only the estimate of the trend component for the latest
 period. "
+
+So we can easily achieve that with a for loop. However, Hodrick Prescott [2s] filter needs at least 5 observations to compute the filter, the first 4 observations come from the whole sample, and from the fifth observation we start applying the two sided filter recursively. 
+
+As inputs the created function needs: 
+- a dataframe with two vectors one of dates and one of data
+- $\lambda$ parameter.
+
+This function just has one output:
+- a dataframe with 4 columns one for date, original data, trend, and cycle.
+
+Using the plot function:
+
+![image](https://user-images.githubusercontent.com/103344273/194733166-bcb2a759-e65f-4a91-9834-f12a1b42c230.png)
 
 
 
