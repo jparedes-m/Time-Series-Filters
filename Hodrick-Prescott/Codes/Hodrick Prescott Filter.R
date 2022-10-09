@@ -60,7 +60,7 @@ hp_filter <- function(data, lambda){
                         trend = tau,
                         cycle = c)
   
-  export <- list(data = results, H_matrix = H)
+  export <- list(data = results, H_matrix = H, lambda = L)
   
   return(export)
 }
