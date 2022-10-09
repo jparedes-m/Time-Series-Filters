@@ -63,6 +63,8 @@ Consider that the initial guesses $\alpha_{0}$, and $P_{0}$ can be computed from
 
 ## Stochastic Drift
 
+Consider the following system:
+
 ```math
 y_{t} = \tau_{t} + c_{t}\\
 \tau_{t} = \delta_{t-1} + \tau_{t-1} + \varepsilon_{t}\\
@@ -71,4 +73,29 @@ c_{t} = \rho_{1} c_{t-1} \rho_{2} c_{t-2} + \mu_{t}\\
 \varepsilon_{t} \sim \text{ iid} \mathcal{N}(0, \sigma^{2}_{\varepsilon}\\
 \omega_{t} \sim \text{ iid} \mathcal{N}(0, \sigma^{2}_{\omega}
 \mu_{t} \sim \text{ iid} \mathcal{N}(0, \sigma^{2}_{\mu}
+```
+Its state space representation can be written as:
+
+### State Equation: $\alpha_{t} = d_{t} + T_{t} \alpha_{t-1} + H_{t}\eta_{t}$
+
+```math
+\begin{pmatrix}
+    \tau_{t}\\\delta_{t} \\ c_{t} \\ c_{t-1}
+    \end{pmatrix} =  \begin{pmatrix}
+    0 \\ 0 \\0 \\0
+    \end{pmatrix} + \begin{pmatrix}
+    1 & 1 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & \rho_{1} & \rho_{2} \\
+    0 & 0 & 1 & 0
+    \end{pmatrix}\begin{pmatrix}
+    \tau_{t-1}\\\delta_{t-1}\\c_{t-1}\\c_{t-2}
+    \end{pmatrix}+\begin{pmatrix}
+    \sigma^{2}_{\epsilon} & 0 & 0 &0 \\
+    0 & \sigma^{2}_{\omega} & 0 &0 \\
+    0 & 0 & \sigma^{2}_{\mu} & 0 \\
+    0 & 0 & 0 & 0
+    \end{pmatrix}\begin{pmatrix}
+    \epsilon_{t} \\ \omega_{t}\\ \mu_{t} \\ 0
+    \end{pmatrix}
 ```
