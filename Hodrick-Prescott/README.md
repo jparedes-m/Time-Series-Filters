@@ -163,7 +163,7 @@ Since it first appeareance was in Stock and Watson (1999), the one sided Hodrick
 
 As Wolf et. al state: 
 
-: "This procedure is equivalent to applying HP-2s recursively on an expanding sample and
+> "This procedure is equivalent to applying HP-2s recursively on an expanding sample and
 keeping, from each recursion step, only the estimate of the trend component for the latest
 period. "
 
