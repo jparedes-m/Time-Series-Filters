@@ -7,5 +7,6 @@ The unobserved components model is a semi-structural model since you give define
 Consider the following system of equations:
 
 ```math
-y_{t} = \tau_{t} + c_{t}
+y_{t} = \tau_{t} + c_{t}\\
+\tau_{t} = \delta + \tau_{t-1} + \varepsilon_{t}
 ```
