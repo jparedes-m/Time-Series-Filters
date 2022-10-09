@@ -48,9 +48,10 @@ The function `hp_filter` needs as inputs:
 - a dataframe containing a column of dates and a column of data
 - the lambda parameter
 
-As output this function returns a list of two elements: 
+As output this function returns a list of three elements: 
 - The first element is a dataframe that contains the original series and the estimated trend and cycle for the provided time span.
 - The $H$ matrix
+- $\lambda$ parameter
 
 Using `plot` we can obtain the following graph:
 ![image](https://user-images.githubusercontent.com/103344273/194721925-b9c4e25b-8ada-4bc6-80b5-49644085654a.png)
@@ -92,6 +93,16 @@ F(\lambda) = \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1
 4. Compute the Hodrick Prescott Filter with the second dataset and $\lambda^{Rule\ 1}$.
 
 ### Code results
+This function needs as inputs:
+- Data1: A dataframe of date and series that you know what the optimal lambda is
+- Data2: A dataframe which you want to know the optimal lambda
+- $\lambda$: this parameter is known for Data1
+- rule: Which rule you want to accomplish? 
+
+The output of this function is:
+- A dataframe that contains the original series and the estimated trend and cycle for the provided time span.
+- The $H$ matrix
+- $\lambda$ parameter
 
 At the file of `HP Marcet and Ravn.R`, you should have in the environment the `hp_filter` function.
 
@@ -176,7 +187,14 @@ As inputs the created function needs:
 This function just has one output:
 - a dataframe with 4 columns one for date, original data, trend, and cycle.
 
-Using the plot function:
+### Code results 
+
+Here's the way to use the function. 
+```
+us_hp <- hp_filter1(data = gdp_us , lambda = 1600)
+```
+
+Using the plot function for the US gdp:
 
 ![image](https://user-images.githubusercontent.com/103344273/194733166-bcb2a759-e65f-4a91-9834-f12a1b42c230.png)
 
