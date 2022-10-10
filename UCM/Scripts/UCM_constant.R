@@ -135,7 +135,7 @@ ucm_const <- function(data, p_estimates = FALSE){
   
   df_s <- df_s[-(1:2),]
   rownames(df_s) <- NULL
-
+  
   
   # Filter ----
   df_ <- as.data.frame(t(fit.obj$at)) %>% 
@@ -150,7 +150,7 @@ ucm_const <- function(data, p_estimates = FALSE){
   df_ <- rbind(row1, df_)
   
   df <- data.frame(date = seq(head(date,1), length = n, by = "quarters"),
-                   serie = data$gdp, 
+                   serie = yt, 
                    trend = df_$trend,
                    drift = df_$drift,
                    cycle = df_$cycle)
