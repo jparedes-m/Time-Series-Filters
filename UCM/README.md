@@ -102,7 +102,7 @@ y_{t} = \tau_{t} + c_{t}\\
 \tau_{t} = \delta_{t-1} + \tau_{t-1} + \varepsilon_{t}\\
 \delta_{t} = \delta_{t-1} + \omega_{t}\\
 c_{t} = \rho_{1} c_{t-1} \rho_{2} c_{t-2} + \mu_{t}\\
-\varepsilon_{t} \sim \text{ iid } \mathcal{N}(0, \sigma^{2}_{\varepsilon}\\
+\varepsilon_{t} \sim \text{ iid } \mathcal{N}(0, \sigma^{2}_{\varepsilon})\\
 \omega_{t} \sim \text{ iid } \mathcal{N}(0, \sigma^{2}_{\omega})\\
 \mu_{t} \sim \text{ iid } \mathcal{N}(0, \sigma^{2}_{\mu})
 ```
