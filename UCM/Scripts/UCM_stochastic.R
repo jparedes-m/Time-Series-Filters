@@ -30,7 +30,7 @@ gdp_us <- fredr(series_id = "GDPC1",
   mutate(gdp = log(gdp))
 
 # Function ----
-ucm_stoch <- function(data, date0, p_estimates = FALSE){
+ucm_stoch <- function(data, p_estimates = FALSE){
   yt <- select_if(data, is.numeric)[[1]]
   date <- select_if(data, is.Date)[[1]]
   n <- length(yt)
@@ -171,7 +171,7 @@ ucm_stoch <- function(data, date0, p_estimates = FALSE){
   df_ <- rbind(row1, df_)
   
   df <- data.frame(date = seq(head(date,1), length = n, by = "quarters"),
-                   serie = data$gdp, 
+                   serie = yt, 
                    trend = df_$trend,
                    drift = df_$drift,
                    cycle = df_$cycle)
