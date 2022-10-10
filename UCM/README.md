@@ -63,6 +63,31 @@ Consider that the initial guesses $\alpha_{0}$, and $P_{0}$ can be computed from
 
 ### Code Results 
 
+This function needs just need one compulsory input:
+- the dataframe with two columns: date vector and data vector
+- optional: `p_estimates = TRUE` if you want to print the estimates of the Kalman Filter. 
+The output of the function is a list of three elements:
+- a table containing the estimates of the Kalman Filter and the initial guesses (computed with Hodrick Prescott and ML)
+- a dataframe containing the data, trend, drift and cycle (data_filter)
+- a dataframe containing the smoothed (smoother)
+```
+us_ucm <- ucm_const(data = gdp_us, p_estimates = TRUE)
+```
+
+In the console it will print the following:
+
+```
+                 g_hp   kalman_est
+phi1     7.803432e-01 9.737668e-01
+phi2    -2.438401e-02 1.821226e-02
+delta    6.666738e-03 6.660969e-03
+sigma_e  4.381146e-06 1.533193e-05
+sigma_w  1.056176e-04 1.134649e-04
+```
+
+Now we can plot the trend and cycle
+
+![image](https://user-images.githubusercontent.com/103344273/194805570-1bc2088e-0dec-4e9b-a801-2c83d84ec4b8.png)
 
 
 
@@ -127,3 +152,31 @@ Consider that the initial guesses $\alpha_0$ and $P_{0}$ can be computed from th
     0 & 0 & \gamma_{1}(c_{t-1}, c_{t}) & \gamma_{0}(c_{t-1})
     \end{bmatrix}_{HP}
 ```
+
+### Code Results 
+
+This function needs just need one compulsory input:
+- the dataframe with two columns: date vector and data vector
+- optional: `p_estimates = TRUE` if you want to print the estimates of the Kalman Filter. 
+The output of the function is a list of three elements:
+- a table containing the estimates of the Kalman Filter and the initial guesses (computed with Hodrick Prescott and ML)
+- a dataframe containing the data, trend, drift and cycle (data_filter)
+- a dataframe containing the smoothed (smoother)
+```
+us_ucm <- ucm_stoch(data = gdp_us, p_estimates = TRUE)
+```
+
+In the console it will print the following:
+
+```
+                 g_hp    kalman_est
+phi1     7.803432e-01  9.223821e-01
+phi2    -2.438401e-02 -3.000073e-03
+sigma_e  4.615888e-07  5.077939e-07
+sigma_w  3.505747e-08  8.773087e-08
+sigma_u  1.056176e-04  1.056471e-04
+```
+
+Now we can plot the trend and cycle
+
+![image](https://user-images.githubusercontent.com/103344273/194805693-619697e1-e7c6-45d8-8479-b78e306f84a6.png)
