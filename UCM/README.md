@@ -66,6 +66,8 @@ Consider that the initial guesses $\alpha_{0}$, and $P_{0}$ can be computed from
 This function needs just need one compulsory input:
 - the dataframe with two columns: date vector and data vector
 - optional: `p_estimates = TRUE` if you want to print the estimates of the Kalman Filter. 
+
+
 The output of the function is a list of three elements:
 - a table containing the estimates of the Kalman Filter and the initial guesses (computed with Hodrick Prescott and ML)
 - a dataframe containing the data, trend, drift and cycle (data_filter)
@@ -158,6 +160,8 @@ Consider that the initial guesses $\alpha_0$ and $P_{0}$ can be computed from th
 This function needs just need one compulsory input:
 - the dataframe with two columns: date vector and data vector
 - optional: `p_estimates = TRUE` if you want to print the estimates of the Kalman Filter. 
+
+
 The output of the function is a list of three elements:
 - a table containing the estimates of the Kalman Filter and the initial guesses (computed with Hodrick Prescott and ML)
 - a dataframe containing the data, trend, drift and cycle (data_filter)
