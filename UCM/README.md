@@ -7,7 +7,7 @@ The unobserved components model is a semi-structural model since you give define
 Consider the following system of equations:
 
 ```math
-y_{t} = \tau_{t} + c_{t}\\
+\displaylines{y_{t} = \tau_{t} + c_{t}\\
 
 \tau_{t} = \delta + \tau_{t-1} + \varepsilon_{t}\\
 
@@ -15,7 +15,7 @@ c_{t} = \rho_{1} c_{t-1} + \rho_{2} c_{t-2} + \mu_{t}\\
 
 \varepsilon_{t} \sim \text{ iid } \mathcal{N} (0, \sigma^{2}_{\varepsilon})\\
 
-\mu_{t} \sim \text{ iid }\mathcal{N}(0, \sigma^{2}_{\mu})
+\mu_{t} \sim \text{ iid }\mathcal{N}(0, \sigma^{2}_{\mu})}
 ```
 
 So I use the State Space representation for estimating with the Kalman Filter. I use the package `FKF`, for the estimation. 
