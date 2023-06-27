@@ -22,9 +22,7 @@ To solve this problem:
 - We will have $T$ First order conditions, where its coefficients will form the $(T \times T)$   $\mathbf{F}$ matrix
 
 ```math
-\boldsymbol{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}\\
-
-\boldsymbol{\tau}_{t} = H\cdot y, \text{ where } H = (\mathbf{I}+\lambda \mathbf{F})^{-1}
+\displaylines{\boldsymbol{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}\\\boldsymbol{\tau}_{t} = H\cdot y, \text{ where } H = (\mathbf{I}+\lambda \mathbf{F})^{-1}}
 ```
 where:
 - $\mathbf{I}$ is the $T \times T$ identity matrix
