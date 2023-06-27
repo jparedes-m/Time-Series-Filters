@@ -23,6 +23,7 @@ To solve this problem:
 
 ```math
 \boldsymbol{\tau}_{t} = (\mathbf{I}+\lambda \mathbf{F})^{-1} \mathbf{y}\\
+
 \boldsymbol{\tau}_{t} = H\cdot y, \text{ where } H = (\mathbf{I}+\lambda \mathbf{F})^{-1}
 ```
 where:
