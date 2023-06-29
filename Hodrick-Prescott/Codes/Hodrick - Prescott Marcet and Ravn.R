@@ -4,9 +4,10 @@
 
 # Code written by: Jorge Paredes on June, 2022.
 
+## Call my function for the HP Filter (I do not know if this should go inside the code)
+source("https://raw.githubusercontent.com/jparedes-m/Time-Series-Filters/main/Hodrick-Prescott/Codes/Hodrick%20Prescott%20Filter.R")
 # Marcet and Ravn HP Filter ----
 hp_filter_MR <- function(data1, data2, lambda = 1600, rule = "rule 1"){
-  
   if(rule == "rule 1" | rule == 1){
     # Rule 1 ----
     ## Find V 
