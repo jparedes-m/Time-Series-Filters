@@ -52,8 +52,8 @@ As output this function returns a list of three elements:
 - The $H$ matrix
 - $\lambda$ parameter
 
-Using `plot` we can obtain the following graph:
-![image](https://user-images.githubusercontent.com/103344273/194721925-b9c4e25b-8ada-4bc6-80b5-49644085654a.png)
+From the Example files we apply the filter for the US GDP and get the following
+![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/5801bc1f-8a62-41a6-aa08-01e52b3b4a20)
 
 
 # Marcet and Ravn approach
@@ -120,9 +120,8 @@ In the console it will display the following result:
  (F-V) = 1.66641873911022e-16
 ```
 
-With base R plot function I made this graphs for Ecuador GDP using the Rule 1 provided by Marcet and Ravn. 
-
-![image](https://user-images.githubusercontent.com/103344273/194731694-9d245fe5-4de8-48eb-a69a-41b5c213482c.png)
+From the examples files I applied the Rule 1 approach for Ecuador's GDP and obtained the following:
+![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/a388260d-d3ef-4d83-b1ae-8a2cd02dc9d2)
 
 ## Rule two
 
@@ -148,24 +147,25 @@ F(\lambda) = \frac{\displaystyle \sum_{t=2}^{T-1}(\tau_{t+1}-2\tau_{t}+\tau_{t-1
 ```
 ### Code Results
 
-Here is the input for the UK output gap under rule 2. 
+Here is the input for Great Britain's output gap under rule 2. (FRED stopped reporting this series in 2020 Q3, so I used Great Britain GDP series in 2023.)
 
 ```
-> HP_uk <- hp_filter_MR(data1 = gdp_us, data2 = gdp_uk, lambda = 1600, rule = "rule 2")
+> HP_gb <- hp_filter_MR(data1 = gdp_us, data2 = gdp_gb, lambda = 1600, rule = "rule 2")
 ```
 
 This is the console output:
 ```
- Root finding: F(λ) - W = 0
+Root finding: F(λ) - W = 0
  ----------------- 
- W: 4.00653265974394e-08 
- λ for data2 under rule 2 is: 3647.6276 
- (F-V) = -1.41034956184781e-18 
+ W: 3.9601200575592e-08 
+ λ for data2 under rule 2 is: 3263.0339 
+ (F-V) = 2.99514158871571e-18 
 ```
 
-Here are the results for the UK under rule 2
+Here are the results for Great Britain under Rule 2
 
-![image](https://user-images.githubusercontent.com/103344273/194731698-1bf5455c-7888-4da6-bca3-6909e923df20.png)
+![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/8c2573e2-2de8-454b-9af6-f62a10730712)
+
 
 # One sided Hodrick Prescott Filter
 
