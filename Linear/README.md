@@ -8,6 +8,12 @@ y_t = \tau_t + c_t
 
 This may be the simplest filter there is in the repository. It uses an Ordinary Least Square estimator for getting the trend and cycle.
 
-For this filter, I use an OLS estimator. I programmed it to get a drift option (if desired)
+In simple terms, linear filter (with drift) computes the following regression. 
 
-So basically you run this regression: 
+```math
+y_t = \alpha + \beta \cdot t + \varepsilon
+```
+
+The linear filter function has three arguments: `data`, `p_estimates`, and `drift`. 
+
+The drift option 
