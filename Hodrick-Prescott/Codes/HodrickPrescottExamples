@@ -2,7 +2,7 @@
 
 ## Data ----
 # You could just download data from FRED and get it into R using readr or readxl packages but I just wanna show off.
-library(fredr); library(dplyr); library(readr)
+library(fredr); library(dplyr); library(readr); library(devtools)
 ## Here put your FREDR key
 fredr_set_key("####")
 ## USA GDP
