@@ -2,7 +2,7 @@
 
 ## Data ----
 # You could just download data from FRED and get it into R using readr or readxl packages but I just wanna show off.
-library(fredr); library(dplyr)
+library(fredr); library(dplyr); library(readr)
 ## Here put your FREDR key
 fredr_set_key("####")
 ## USA GDP
@@ -14,3 +14,72 @@ gdp_us <- fredr(series_id = "GDPC1",
   mutate(gdp = log(gdp))
 
 ## Ecuador GDP
+### I have provided data up to 2023 in this repo (it is in a csv file)
+gdp_ec <- read_delim("Data/gdp_ec.csv", 
+                     delim = ";", escape_double = FALSE, trim_ws = TRUE) %>% 
+  mutate(gdp = (gdp*1000)/1000000,
+         gdp = log(GDP))
+
+## Great Britain GDP
+### I am a bit confused in the Units of this series, but it does the work for the example.
+gdp_gb <- fredr(series_id = "NGDPRSAXDCGBQ", 
+                observation_start = as.Date("1975-01-01"),
+                observation_end = as.Date("2023-06-01")) %>% 
+  select(date, value) %>% 
+  rename(gdp = value) %>% 
+  mutate(gdp = log(gdp))
+
+## Simple HP Filter ----
+US_HP <- hp_filter(data = gdp_us, lambda = 1600)
+### Graph
+par(mfrow=c(1,2))
+plot(US_HP$data$date, exp(US_HP$data$serie), main = "Serie and trend\nHodrick - Prescott filter (λ = 1600)\nUnited States of America",
+     ylab="Billions of US dollars (2012, chained.)", 
+     xlab="Time", type="l", lwd = 1.5)
+lines(US_HP$data$date,exp(US_HP$data$trend), col="red", lwd = 1.5)
+legend("topleft", legend = c("Variable", "Trend"), col=c("black", "red"), lty=1)
+
+plot(US_HP$data$date, 100*US_HP$data$cycle, main ="Cycle\nHodrick - Prescott filter (λ = 1600)\nUnited States of America",
+     ylab="% Deviation from Trend", xlab = "Time", type="l", lwd = 1.5,
+     yaxp = c(min(round(100*US_HP$data$cycle,0)), max(round(100*US_HP$data$cycle, 0)), 10),
+     las =2)
+abline(h=0, col="red", lty=2, lwd = 2)
+par(mfrow=c(1,1))
+
+## MR version for HP filter in Cross Country Comparisons ----
+HP_ec <- hp_filter_MR(data1 = gdp_us, data2 = gdp_ec, lambda = 1600, rule = "rule 1")
+HP_gb <- hp_filter_MR(data1 = gdp_us, data2 = gdp_gb, lambda = 1600, rule = "rule 2")
+
+### Graphs 
+#### Ecuador
+par(mfrow=c(1,2))
+plot(HP_ec$data$date, exp(HP_ec$data$serie), main = paste0("Serie and trend \nHodrick - Prescott [MR] (λ = ",round(HP_ec$lambda,0),") \nEcuador"),
+     ylab="Millions of US dollars (2007, chained.)", 
+     xlab="Time", type="l", lwd = 1.5)
+lines(HP_ec$data$date,exp(HP_ec$data$trend), col="red", lwd = 1.5)
+legend("topleft", legend = c("Variable", "Trend"), col=c("black", "red"), lty=1)
+
+plot(HP_ec$data$date, 100*HP_ec$data$cycle, main = paste0("Cycle \nHodrick - Prescott [MR] (λ = ",round(HP_ec$lambda,0),") \nEcuador"),
+     ylab="% Deviation from Trend", xlab = "Time", type="l", lwd = 1.5, 
+     yaxp = c(min(round(100*HP_ec$data$cycle,0)), max(round(100*HP_ec$data$cycle, 0)), 10),
+     las =2)
+abline(h=0, col="red", lty=2, lwd = 2)
+par(mfrow=c(1,1))
+
+#### Great Britain
+par(mfrow=c(1,2))
+plot(HP_gb$data$date, exp(HP_gb$data$serie), main = paste0("Serie and trend \nHodrick - Prescott [MR] (λ = ",round(HP_gb$lambda,0),") \nGreat Britain"),
+     ylab="Millions LCU", 
+     xlab="Time", type="l", lwd = 1.5)
+lines(HP_gb$data$date,exp(HP_gb$data$trend), col="red", lwd = 1.5)
+legend("topleft", legend = c("Variable", "Trend"), col=c("black", "red"), lty=1)
+
+plot(HP_gb$data$date, 100*HP_gb$data$cycle, main = paste0("Cycle \n Hodrick - Prescott (λ = ",round(HP_gb$lambda,0),") \nGreat Britain"),
+     ylab="% Deviation from Trend", xlab = "Time", type="l", lwd = 1.5, yaxp = c(-30, 5, 35),
+     yaxp = c(min(round(100*HP_gb$data$cycle,0)), max(round(100*HP_ec$data$cycle, 0)), 10),
+     las =2)
+abline(h=0, col="red", lty=2, lwd = 2)
+par(mfrow=c(1,1))
+
+
+  
