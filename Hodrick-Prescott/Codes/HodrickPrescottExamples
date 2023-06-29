@@ -10,8 +10,7 @@ gdp_us <- fredr(series_id = "GDPC1",
                 observation_start = as.Date("1970-01-01"),
                 observation_end = as.Date("2023-06-01")) %>% 
   select(date, value) %>% 
-  rename(gdp = value) %>% 
-  mutate(gdp = log(gdp))
+  rename(gdp = value) %>% mutate(gdp = log(gdp))
 
 ## Ecuador GDP
 ### I have provided data up to 2023 in this repo (it is in a csv file)
@@ -81,5 +80,21 @@ plot(HP_gb$data$date, 100*HP_gb$data$cycle, main = paste0("Cycle \n Hodrick - Pr
 abline(h=0, col="red", lty=2, lwd = 2)
 par(mfrow=c(1,1))
 
+## Hodrick Prescot Filter [one-sided] ----
+US_HP1S <- hp_filter1s(data = gdp_us , lambda = 1600)
 
-  
+### Graphs
+par(mfrow=c(1,2))
+plot(US_HP1S$date, exp(US_HP1S$serie), main = "Serie and trend\nHodrick - Prescott [1s] (λ = 1600)\nUnited States of America",
+     ylab="Billions of US dollars (2012, chained.)", 
+     xlab="Time", type="l", lwd = 1.5)
+lines(US_HP1S$date,exp(US_HP1S$trend), col="red", lwd = 1.5)
+legend("topleft", legend = c("Variable", "Trend"), col=c("black", "red"), lty=1)
+
+plot(US_HP1S$date, 100*US_HP1S$cycle, main ="Cycle\n Hodrick - Prescott [1s] (λ = 1600)\nUnited States of America",
+     ylab="% Deviation from Trend", xlab = "Time", type="l", lwd = 1.5, 
+     yaxp = c(-10, 5, 15))
+abline(h=0, col="red", lty=2, lwd = 2)
+par(mfrow=c(1,1))
+
+# EOF
