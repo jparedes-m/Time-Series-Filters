@@ -1,8 +1,8 @@
 # Linear Filter
 
 linear <- function(data, p_estimates = FALSE, drift = TRUE){
-  yt <- select_if(data, is.numeric)
-  date <- select_if(data, is.Date)
+  yt <- select_if(data, is.numeric)[[1]]
+  date <- select_if(data, is.Date)[[1]]
   n <- length(yt)
   
   t <- 1:n
