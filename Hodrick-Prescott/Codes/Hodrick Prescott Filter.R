@@ -5,24 +5,8 @@
 # Inspired by the first problem set of intermediate macroeconomics lectured at USFQ by Carlos Uribe
 
 # Preamble ----
-invisible(lapply(c("readr","tidyverse", "lubridate", "data.table"), library, character.only=T))
+library(tidyverse)
 
-home <- "C:/Users/jparedesm/iCloudDrive/Desktop/Papers/Time Series/Univariate/Hodrick Prescott/Data"
-laptop <- "C:/Users/jpare/iCloudDrive/Desktop/Papers/Time Series/Univariate/Hodrick Prescott/Data"
-setwd(home)
-wd <- getwd()
-
-rm(home, laptop)
-
-# Data ----
-fredr_set_key("#######")
-
-gdp_us <- fredr(series_id = "GDPC1", 
-                observation_start = as.Date("1970-01-01"),
-                observation_end = as.Date("2022-04-01")) %>% 
-  select(date, value) %>% 
-  rename(gdp = value) %>% 
-  mutate(gdp = log(gdp))
 # HP Filter ----
 hp_filter <- function(data, lambda){
   # Set the data ----
@@ -62,22 +46,5 @@ hp_filter <- function(data, lambda){
   
   return(export)
 }
-
-us_hp <- hp_filter(data=gdp, lambda = 1600)
-
-
-# Graphs ----
-par(mfrow=c(1,2))
-plot(us_hp$data$date, exp(us_hp$data$serie), main = "Serie and trend \n Hodrick - Prescott (λ = 1600)",
-     ylab="Billions of US dollars (2012, chained.)", 
-     xlab="Time", type="l", lwd = 1.5)
-lines(us_hp$data$date,exp(us_hp$data$trend), col="red", lwd = 1.5)
-legend("topleft", legend = c("Variable", "Trend"), col=c("black", "red"), lty=1)
-
-plot(us_hp$data$date, 100*us_hp$data$cycle, main ="Cycle \n Hodrick - Prescott (λ = 1600)",
-     ylab="% Deviation from Trend", xlab = "Time", type="l", lwd = 1.5, yaxp = c(-10, 5, 15))
-abline(h=0, col="red", lty=2, lwd = 2)
-par(mfrow=c(1,1))
-
 
 # EOF
