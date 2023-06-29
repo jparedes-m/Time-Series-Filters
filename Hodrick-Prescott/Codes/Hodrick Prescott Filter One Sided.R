@@ -6,6 +6,7 @@
 ## https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3536248
 
 hp_filter1s <- function(data, lambda){
+  source("https://raw.githubusercontent.com/jparedes-m/Time-Series-Filters/main/Hodrick-Prescott/Codes/Hodrick%20Prescott%20Filter.R")
   y <- select_if(data, is.numeric)[[1]]
   N <- length(y)
   L = lambda
