@@ -5,29 +5,7 @@
 # Based upon the description given by Wolf et. al (2020) 
 ## https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3536248
 
-# Preamble -----
-invisible(lapply(c("readr", "tidyverse", "lubridate", "fredr"), library, character.only =T))
-
-home <- "C:/Users/jparedesm/iCloudDrive/Desktop/Papers/Time Series/Univariate/Hodrick Prescott/Data"
-laptop <- "C:/Users/jpare/iCloudDrive/Desktop/Papers/Time Series/Univariate/Hodrick Prescott/Data"
-setwd(home)
-wd <- getwd()
-
-rm(home, laptop)
-
-# FRED Setting
-fredr_set_key("###########")
-
-# Data ----
-
-gdp_us <- fredr(series_id = "GDPC1", 
-                observation_start = as.Date("1970-01-01"),
-                observation_end = as.Date("2022-04-01")) %>% 
-  select(date, value) %>% 
-  rename(gdp = value) %>% 
-  mutate(gdp = log(gdp))
-
-hp_filter1 <- function(data, lambda){
+hp_filter1s <- function(data, lambda){
   y <- select_if(data, is.numeric)[[1]]
   N <- length(y)
   L = lambda
@@ -57,20 +35,5 @@ hp_filter1 <- function(data, lambda){
   return(results)
   
 }
-
-us_hp <- hp_filter1(data = gdp_us , lambda = 1600)
-
-# Graphics ----
-par(mfrow=c(1,2))
-plot(us_hp$date, exp(us_hp$serie), main = "Serie and trend \n Hodrick - Prescott [1s] (λ = 1600)",
-     ylab="Billions of US dollars (2012, chained.)", 
-     xlab="Time", type="l", lwd = 1.5)
-lines(us_hp$date,exp(us_hp$trend), col="red", lwd = 1.5)
-legend("topleft", legend = c("Variable", "Trend"), col=c("black", "red"), lty=1)
-
-plot(us_hp$date, 100*us_hp$cycle, main ="Cycle \n Hodrick - Prescott [1s] (λ = 1600)",
-     ylab="% Deviation from Trend", xlab = "Time", type="l", lwd = 1.5, yaxp = c(-10, 5, 15))
-abline(h=0, col="red", lty=2, lwd = 2)
-par(mfrow=c(1,1))
 
 #EOF
