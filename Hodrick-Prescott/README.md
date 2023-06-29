@@ -125,7 +125,7 @@ From the examples files I applied the Rule 1 approach for Ecuador's GDP and obta
 
 ## Rule two
 
-The second rule stated by Marcet and Ravn is to modify the restriction of the main minimization problem so that the constraint restricts the variability of the acceleration in the trend component directly.  This second rule might be used if the researcher believes that the deviation of actual trend from a linear trend is simialr across countries (i.e. UK and US).
+The second rule stated by Marcet and Ravn is to modify the restriction of the main minimization problem so that the constraint restricts the variability of the acceleration in the trend component directly.  This second rule might be used if the researcher believes that the deviation of the actual trend from a linear trend is similar across countries (i.e. UK and US).
 
 Formally, the minimization problem becomes:
 
@@ -167,9 +167,9 @@ Here are the results for Great Britain under Rule 2
 ![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/8c2573e2-2de8-454b-9af6-f62a10730712)
 
 
-# One sided Hodrick Prescott Filter
+# One-sided Hodrick Prescott Filter
 
-Since it first appeareance was in Stock and Watson (1999), the one sided Hodrick Prescott filter tries to detrend the series into a trend and cyclical component. However it is Wolf, et. al (2020) who computes it without the Kalman Filter. 
+Since its first appearance was in Stock and Watson (1999), the one-sided Hodrick Prescott filter tries to detrend the series into a trend and cyclical component. However, it is Wolf, et. al (2020) who computes it without the Kalman Filter. 
 
 As Wolf et. al (2020) state: 
 
@@ -177,7 +177,7 @@ As Wolf et. al (2020) state:
 keeping, from each recursion step, only the estimate of the trend component for the latest
 period. "
 
-So we can easily achieve that with a for loop. However, Hodrick Prescott [2s] filter needs at least 5 observations to compute the filter, the first 4 observations come from the whole sample, and from the fifth observation we start applying the two sided filter recursively. 
+So we can easily achieve that with a for loop. However, the Hodrick Prescott [2s] filter needs at least 5 observations to compute the filter, the first 4 observations come from the whole sample, and from the fifth observation, we start applying the two-sided filter recursively. 
 
 As inputs the created function needs: 
 - a dataframe with two vectors one of dates and one of data
@@ -190,12 +190,16 @@ This function just has one output:
 
 Here's the way to use the function. 
 ```
-us_hp <- hp_filter1(data = gdp_us , lambda = 1600)
+US_HP1S <- hp_filter1s(data = gdp_us , lambda = 1600)
 ```
 
-Using the plot function for the US gdp:
+Here are the results for the One-Sided Hodrick Prescott Filter for the US GDP
+![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/6be338da-34a8-4017-81af-d92d98a94de4)
 
-![image](https://user-images.githubusercontent.com/103344273/194733166-bcb2a759-e65f-4a91-9834-f12a1b42c230.png)
+
+----------
+Recall that you must call the library `devtools` to run the code!
+
 
 
 
