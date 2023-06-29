@@ -7,7 +7,7 @@ library(fredr); library(dplyr)
 fredr_set_key("####")
 gdp_us <- fredr(series_id = "GDPC1", 
                 observation_start = as.Date("1970-01-01"),
-                observation_end = as.Date("2022-04-01")) %>% 
+                observation_end = as.Date("2023-06-01")) %>% 
   select(date, value) %>% 
   rename(gdp = value) %>% 
   mutate(gdp = log(gdp))
