@@ -14,6 +14,8 @@ In simple terms, linear filter (with drift) computes the following regression.
 y_t = \alpha + \beta \cdot t + \varepsilon
 ```
 
+Where, $\alpha$ is the drift, seen as the intersection between the trend and the vertical axis. $\beta$ is the slope of time ($t$)
+
 The linear filter function has three arguments: `data`, `p_estimates`, and `drift`. 
 
 The drift option 
