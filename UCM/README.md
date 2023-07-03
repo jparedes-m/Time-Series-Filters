@@ -93,7 +93,8 @@ sigma_w  1.056176e-04 1.134649e-04
 
 Now we can plot the trend and cycle
 
-![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/4940b15d-1e48-455d-bf48-d859013cd939)
+![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/0b3c302c-7ad9-4e76-a913-6b399bf5e471)
+
 
 
 
@@ -188,5 +189,6 @@ sigma_u  1.056176e-04  1.056471e-04
 
 Now we can plot the trend and cycle
 
-![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/0cf1a958-f739-4fa2-b07e-3990db2d6c28)
+![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/73f9b944-148e-4713-863b-6b0e6aca6ef3)
+
 
