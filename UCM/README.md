@@ -188,4 +188,5 @@ sigma_u  1.056176e-04  1.056471e-04
 
 Now we can plot the trend and cycle
 
-![image](https://user-images.githubusercontent.com/103344273/194805693-619697e1-e7c6-45d8-8479-b78e306f84a6.png)
+![image](https://github.com/jparedes-m/Time-Series-Filters/assets/103344273/0cf1a958-f739-4fa2-b07e-3990db2d6c28)
+
