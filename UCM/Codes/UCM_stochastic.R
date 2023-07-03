@@ -3,31 +3,7 @@
 # Written by Jorge Paredes on Oct, 2022.
 
 # Preamble ----
-
-# install.packages(c("tidyverse","foreach", "doParallel","lubridate","zoo", "FKF", "mFilter", 
-#"latex2exp", "readxl", "progress", "doSNOW", "parallel"))
-invisible(lapply(c("tidyverse","foreach", "doParallel","lubridate","zoo", "FKF", "mFilter", 
-                   "latex2exp", "readxl", "progress", "doSNOW", "parallel", "fredr"), library, character.only = T))
-
-
-# Working Directory
-home <- "C:/Users/jparedesm/iCloudDrive/Desktop/Papers/Time Series/Univariate/Hodrick Prescott/Data"
-laptop <- "C:/Users/jpare/iCloudDrive/Desktop/Papers/Time Series/Univariate/Hodrick Prescott/Data"
-setwd(home)
-wd <- getwd()
-
-# FRED Setting
-fredr_set_key("#####")
-
-rm(laptop, home)
-
-# Data ----
-gdp_us <- fredr(series_id = "GDPC1", 
-                observation_start = as.Date("1970-01-01"),
-                observation_end = as.Date("2022-04-01")) %>% 
-  select(date, value) %>% 
-  rename(gdp = value) %>% 
-  mutate(gdp = log(gdp))
+library(FKF)
 
 # Function ----
 ucm_stoch <- function(data, p_estimates = FALSE){
@@ -38,9 +14,10 @@ ucm_stoch <- function(data, p_estimates = FALSE){
   
   # Get the guesses for p1, p2, sigma_e, sigma_w, sigma_u, ----
   
-  hp_est <- hpfilter(yt, freq = 1600, type = "lambda")
-  yt_cycle_hp <- as.matrix(hp_est$cycle)
-  yt_trend_hp <- as.matrix(hp_est$trend)
+  source("https://raw.githubusercontent.com/jparedes-m/Time-Series-Filters/main/Hodrick-Prescott/Codes/Hodrick%20Prescott%20Filter.R")
+  hp_est <- hp_filter(data = data, lambda = 1600)
+  yt_cycle_hp <- as.matrix(hp_est$data$cycle)
+  yt_trend_hp <- as.matrix(hp_est$data$trend)
   
   # Cycle equation
   ce_mle <- arima(ts(yt_cycle_hp), order = c(2, 0, 0), method = "CSS", include.mean = F)
@@ -186,19 +163,3 @@ ucm_stoch <- function(data, p_estimates = FALSE){
   return(result)
   
 }
-us_ucm <- ucm_stoch(data = gdp_us, p_estimates = TRUE)
-
-# Graph ----
-par(mfrow = c(1,2))
-plot(us_ucm$data_filter$date, exp(us_ucm$data_filter$serie), type = "l", lwd = 1.75,
-     main = "Unobserved Components Model \n Stochastic Drift \n United States",
-     ylab = "Billions of US Dollars (2012, chained)",
-     xlab = "Time")
-lines(us_ucm$data_filter$date, exp(us_ucm$data_filter$trend), col = "red", lwd = 1.75)
-
-plot(us_ucm$data_filter$date, 100*us_ucm$data_filter$cycle, type = "l", lwd = 1.75,
-     main = "Unobserved Components Model \n Stochastic Drift \n United States",
-     ylab = "% Deviation from trend",
-     xlab = "Time")
-abline(h = 0, col = "red", lwd = 2, lty = 2)
-par(mfrow  = c(1,1))
