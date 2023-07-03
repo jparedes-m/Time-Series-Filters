@@ -3,31 +3,7 @@
 # Written by Jorge Paredes on Oct, 2022.
 
 # Preamble ----
-
-# install.packages(c("tidyverse","foreach", "doParallel","lubridate","zoo", "FKF", "mFilter", 
-#"latex2exp", "readxl", "progress", "doSNOW", "parallel"))
-invisible(lapply(c("tidyverse","foreach", "doParallel","lubridate","zoo", "FKF", "mFilter", 
-                   "latex2exp", "readxl", "progress", "doSNOW", "parallel", "fredr"), library, character.only = T))
-
-
-# Working Directory
-home <- "C:/Users/jparedesm/iCloudDrive/Desktop/Papers/Time Series/Univariate/Hodrick Prescott/Data"
-laptop <- "C:/Users/jpare/iCloudDrive/Desktop/Papers/Time Series/Univariate/Hodrick Prescott/Data"
-setwd(home)
-wd <- getwd()
-
-# FRED Setting
-fredr_set_key("#####")
-
-rm(laptop, home)
-
-# Data ----
-gdp_us <- fredr(series_id = "GDPC1", 
-                observation_start = as.Date("1970-01-01"),
-                observation_end = as.Date("2022-04-01")) %>% 
-  select(date, value) %>% 
-  rename(gdp = value) %>% 
-  mutate(gdp = log(gdp))
+library(FKF)
 
 # Function ----
 
@@ -39,10 +15,11 @@ ucm_const <- function(data, p_estimates = FALSE){
   n <- length(yt)
   
   # Estimate the useful parameters  ----
-  hp_est <- hpfilter(yt, freq = 1600,type = "lambda")
+  source("https://raw.githubusercontent.com/jparedes-m/Time-Series-Filters/main/Hodrick-Prescott/Codes/Hodrick%20Prescott%20Filter.R")
+  hp_est <- hp_filter(data = data, lambda = 1600)
   
-  trend_hp <- matrix(hp_est$trend, ncol = 1)
-  cycle_hp <- matrix(hp_est$cycle, ncol = 1)
+  trend_hp <- matrix(hp_est$data$trend, ncol = 1)
+  cycle_hp <- matrix(hp_est$data$cycle, ncol = 1)
   
   ## Estimate parameters for the trend equation
   D_trend_hp <-  trend_hp - lag(trend_hp)
@@ -164,20 +141,5 @@ ucm_const <- function(data, p_estimates = FALSE){
   
   return(result)
 }
-us_ucm <- ucm_const(data = gdp_us, p_estimates =TRUE)
 
-# Graph ----
-par(mfrow = c(1,2))
-plot(us_ucm$data_filter$date, exp(us_ucm$data_filter$serie), type = "l", lwd = 1.75,
-     main = "Unobserved Components Model \n Constant Drift \n United States",
-     ylab = "Billions of US Dollars (2012, chained)",
-     xlab = "Time")
-lines(us_ucm$data_filter$date, exp(us_ucm$data_filter$trend), col = "red", lwd = 1.75)
-
-plot(us_ucm$data_filter$date, 100*us_ucm$data_filter$cycle, type = "l", lwd = 1.75,
-     main = "Unobserved Components Model \n Constant Drift \n United States",
-     ylab = "% Deviation from trend",
-     xlab = "Time")
-abline(h = 0, col = "red", lwd = 2, lty = 2)
-par(mfrow  = c(1,1))
 #EOF
